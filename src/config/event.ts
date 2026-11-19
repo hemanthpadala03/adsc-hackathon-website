@@ -80,7 +80,7 @@ export const challenges: Challenge[] = [
   },
   {
     id: "placeholder-02",
-    title: "Challenge to be announced",
+    title: "Challenge Awaiting",
     statusLabel: "Placeholder 02",
     summary:
       "Reserved for a confirmed brief. Add the title, the problem and who it is for in this list when they are known.",
