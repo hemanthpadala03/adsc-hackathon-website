@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ADSC Hackathon website
 
-## Getting Started
+Website for the hackathon organised by the Aachen Data Science Club (ADSC) at RWTH Aachen University.
+Motto: **Innovate. Sustain. Inspire.**
 
-First, run the development server:
+The official event name, date, venue, programme, speakers, sponsors, challenges, registration platform and
+pricing are **not final**. The site uses "ADSC Hackathon" as a provisional name and shows "Coming soon"
+for everything unconfirmed. `sustAInIT` is a working theme, not the confirmed name.
+
+## Stack
+
+Next.js 16 (App Router, Cache Components), React 19, TypeScript (strict), Tailwind CSS 4,
+shadcn/ui (Base UI) and Lucide icons.
+
+## Getting started
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev        # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+| Script                 | Purpose          |
+| ---------------------- | ---------------- |
+| `npm run lint`         | ESLint           |
+| `npm run typecheck`    | `tsc --noEmit`   |
+| `npm run build`        | Production build |
+| `npm run format`       | Prettier (write) |
+| `npm run format:check` | Prettier (check) |
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Where to edit content
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+All editable content is centralised in `src/config/`:
 
-## Learn More
+- `site.ts` – name, motto, theme label, contact email.
+- `event.ts` – pillars, highlights, challenges, schedule, sponsor slots, FAQ, capacity policy.
+- `registration.ts` – registration URL. Leave `url` as `null` until a platform is confirmed; the
+  registration button then stays disabled.
+- `navigation.ts`, `social.ts` – navigation and social links.
 
-To learn more about Next.js, take a look at the following resources:
+**Capacity:** the venue limit of 199 includes participants, volunteers and ADSC members. Never publish
+it as the number of participant places.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+src/app/            routes (/, about, challenges, programme, sponsors, faq, participation)
+src/components/     ui (shadcn), layout, sections, shared
+src/features/       independent modules (registration; dashboards, submissions etc. later)
+src/config, lib, types
+```
 
-## Deploy on Vercel
+## Branches and deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+`feature/initial-website` → `dev` → `main`. CI (`.github/workflows/ci.yml`) runs lint, typecheck and
+build. Deploy with Vercel's GitHub integration: `main` is production, other branches get previews.
+Optionally set `NEXT_PUBLIC_SITE_URL` (see `.env.example`) to the final domain.
