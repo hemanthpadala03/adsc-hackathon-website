@@ -10,7 +10,7 @@ import { siteConfig } from "@/config/site";
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden bg-deep text-white">
+    <section className="relative overflow-hidden bg-gradient-to-br from-rwth via-teal to-green text-white">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_60%_at_85%_20%,rgba(31,181,176,0.22),transparent),radial-gradient(50%_60%_at_5%_100%,rgba(0,84,159,0.45),transparent)]"
