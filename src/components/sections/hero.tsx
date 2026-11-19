@@ -17,6 +17,9 @@ export function Hero() {
       />
       <Container className="relative grid items-center gap-12 py-20 md:py-28 lg:grid-cols-[1.2fr_0.8fr]">
         <div className="reveal">
+          <p className="mb-6 inline-block rounded-full bg-white px-4 py-1.5 text-sm font-semibold text-rwth">
+            New feature preview: demo branch
+          </p>
           <p className="text-sm font-medium tracking-wide text-[#c7ebe6]">
             {siteConfig.organiser} · {siteConfig.university}
           </p>
